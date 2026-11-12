@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   agentRules: false,
   images: {
-    unoptimized: true,
+    formats: ["image/avif", "image/webp"],
   },
   async redirects() {
     const entries = Object.entries(oldAddresses);
