@@ -4,7 +4,8 @@ import { Container } from "@/components/ui/Container";
 import { site } from "@/config/site";
 import { services } from "@/content/services";
 
-const headingClass = "mb-[16px] text-[17px] font-extrabold";
+// h2 i stället för h4 så att rubriknivåerna inte hoppar. Klasserna behåller utseendet.
+const headingClass = "mb-[16px] text-[17px] leading-[1.5] font-extrabold tracking-normal";
 const linkClass = "mb-[11px] block text-[15px] opacity-80 hover:opacity-100";
 
 const companyLinks = [
@@ -30,7 +31,7 @@ export function Footer() {
             </p>
           </div>
           <div>
-            <h4 className={headingClass}>Tjänster</h4>
+            <h2 className={headingClass}>Tjänster</h2>
             {services.map((service) => (
               <a key={service.id} href="#tjanster" className={linkClass}>
                 {service.name}
@@ -38,7 +39,7 @@ export function Footer() {
             ))}
           </div>
           <div>
-            <h4 className={headingClass}>UniClean</h4>
+            <h2 className={headingClass}>UniClean</h2>
             {companyLinks.map((link) => (
               <a key={link.href} href={link.href} className={linkClass}>
                 {link.label}
@@ -46,7 +47,7 @@ export function Footer() {
             ))}
           </div>
           <div>
-            <h4 className={headingClass}>Hjälp</h4>
+            <h2 className={headingClass}>Hjälp</h2>
             <a href="#kontakt" className={linkClass}>
               Kontakt
             </a>
