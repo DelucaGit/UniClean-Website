@@ -54,7 +54,7 @@ export function SupportForm() {
 
     setStatus("sending");
     try {
-      const response = await fetch("/api/support", {
+      const response = await fetch("/api/support/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...values, company: String(data.get("company") ?? "") }),
