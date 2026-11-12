@@ -25,6 +25,8 @@ npm run dev
 - `npm run build` bygger sajten för produktion.
 - `npm run start` kör den byggda sajten.
 
+Bilderna skalas om och skickas som AVIF eller WebP av Next.js bildoptimering. Den kräver att sajten körs som Node-server (`npm run start`) och fungerar inte med statisk export.
+
 ## Supportformuläret
 
 Formuläret skickar ärendet till `POST /api/support/`, som mejlar det vidare med nodemailer. Sajten måste därför köras som Node-server (`npm run start`), inte som statisk export.
