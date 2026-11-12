@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { steps } from "@/content/steps";
@@ -38,7 +39,8 @@ export function HowItWorks() {
       <Container>
         <h2>Så funkar det</h2>
         <div className="mt-[36px] grid grid-cols-[1fr_300px] items-center gap-[84px] max-[960px]:grid-cols-1 max-[960px]:gap-[40px]">
-          <div className="grid">
+          {/* Fokus stoppar det automatiska bytet, så att den som använder tangentbord hinner läsa. */}
+          <div className="grid" onFocus={() => setAuto(false)}>
             {steps.map((step, i) => {
               const on = i === active;
               return (
@@ -50,8 +52,8 @@ export function HowItWorks() {
                     setAuto(false);
                     setActive(i);
                   }}
-                  className={`grid cursor-pointer grid-cols-[40px_1fr] gap-[16px] border-t border-line py-[18px] text-left transition-opacity duration-200 last:border-b motion-reduce:transition-none ${
-                    on ? "opacity-100" : "opacity-50 hover:opacity-80"
+                  className={`grid cursor-pointer grid-cols-[40px_1fr] gap-[16px] border-t border-line py-[18px] text-left last:border-b ${
+                    on ? "text-ink" : "text-mute hover:text-ink"
                   }`}
                 >
                   <span
@@ -75,14 +77,16 @@ export function HowItWorks() {
               {steps.map((step, i) => {
                 const on = i === active;
                 return (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <Image
                     key={step.image}
                     src={step.image}
-                    alt={on ? "Skärmbild från appen" : ""}
+                    alt={on ? `Skärmbild från appen: ${step.title}` : ""}
                     aria-hidden={on ? undefined : true}
+                    width={600}
+                    height={1211}
+                    sizes="(max-width: 960px) 256px, 286px"
                     className={`block w-full rounded-[24px] transition-opacity duration-[250ms] motion-reduce:transition-none ${
-                      i === 0 ? "" : "absolute inset-0 h-full"
+                      i === 0 ? "h-auto" : "absolute inset-0 h-full"
                     } ${on ? "opacity-100" : "opacity-0"}`}
                   />
                 );

@@ -155,7 +155,9 @@ export function SupportForm() {
         {status === "sent" && "Tack, vi hör av oss."}
         {status === "error" && (
           <>
-            Det gick inte att skicka. Mejla oss på <a href={`mailto:${email}`}>{email}</a>
+            Det gick inte att skicka. Mejla oss på <a href={`mailto:${email}`} className="underline">
+              {email}
+            </a>
           </>
         )}
       </div>

@@ -54,6 +54,21 @@
   p {
     color: var(--color-mute);
   }
+  /* Synlig fokusmarkering för tangentbord. Fält med egen ram (outline-none) markeras av ramen. */
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  header :focus-visible,
+  footer :focus-visible,
+  .dark :focus-visible {
+    outline-color: #fff;
+  }
+  /* Platshållartext med kontrast över 4,5:1 mot både ljus yta och vitt. */
+  ::placeholder {
+    color: var(--color-mute);
+    opacity: 1;
+  }
 }
 
 @layer components {

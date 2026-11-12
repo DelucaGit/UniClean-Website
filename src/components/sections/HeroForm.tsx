@@ -39,7 +39,11 @@ export function HeroForm() {
 
   return (
     <div>
-      <div className="mb-[26px] inline-flex rounded-full bg-soft p-[4px]">
+      <div
+        role="group"
+        aria-label="Välj vad du vill göra"
+        className="mb-[26px] inline-flex rounded-full bg-soft p-[4px]"
+      >
         {modes.map((m) => (
           <button
             key={m.id}

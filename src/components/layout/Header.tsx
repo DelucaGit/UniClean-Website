@@ -14,7 +14,7 @@ export function Header() {
         <a href="#top" className="text-[26px] font-black tracking-[-.01em]">
           {site.name}
         </a>
-        <nav className="flex gap-[6px] max-[960px]:hidden">
+        <nav aria-label="Huvudmeny" className="flex gap-[6px] max-[960px]:hidden">
           {navLinks.map((link) => (
             <a key={link.href} href={link.href} className={textLink}>
               {link.label}

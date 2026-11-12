@@ -37,7 +37,7 @@ export function Video() {
               <button
                 type="button"
                 onClick={() => setPlaying(true)}
-                className="absolute inset-0 z-[2] grid cursor-pointer place-items-center border-0 bg-[rgba(0,0,0,.38)] p-0"
+                className="absolute inset-0 z-[2] grid cursor-pointer place-items-center border-0 bg-[rgba(0,0,0,.38)] p-0 focus-visible:outline-white focus-visible:-outline-offset-[6px]"
               >
                 <span className="grid h-[84px] w-[84px] place-items-center rounded-full bg-white before:ml-[6px] before:border-y-[15px] before:border-l-[24px] before:border-y-transparent before:border-l-ink before:content-['']" />
                 <span className="sr-only">Spela videon</span>
