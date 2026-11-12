@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+
 import type { NavLink } from "@/content/nav";
 
 type MobileMenuProps = {
