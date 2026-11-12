@@ -3,6 +3,7 @@ import { Nunito } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { SkipLink } from "@/components/layout/SkipLink";
+import { HashScroll } from "@/components/layout/HashScroll";
 import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/config/site";
 import "./globals.css";
@@ -52,8 +53,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="sv" className={nunito.variable}>
+    <html lang="sv" data-scroll-behavior="smooth" className={nunito.variable}>
       <body>
+        <HashScroll />
         <SkipLink />
         <Header />
         <div id="innehall" tabIndex={-1} className="outline-none">
