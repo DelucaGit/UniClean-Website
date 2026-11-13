@@ -82,4 +82,90 @@
   .dark p {
     color: rgba(255, 255, 255, 0.76);
   }
+
+  /*
+   * Tjänstemenyn i hero. Den stängda rutan ser ut som postnummerfältet
+   * (färg, höjd och ram kommer från fältet runt den). Webbläsare som stöder
+   * appearance: base-select (Chrome, Edge) får också en egen öppen lista.
+   * Övriga visar sin egen lista, och mobiler sin egen väljare.
+   */
+  .select {
+    appearance: none;
+    cursor: pointer;
+    padding: 0 26px 0 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none' stroke='%230f2233' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5.25 7 9.25l4-4'/%3E%3C/svg%3E")
+      no-repeat right 2px center / 14px;
+  }
+
+  @supports (appearance: base-select) {
+    .select,
+    .select::picker(select) {
+      appearance: base-select;
+    }
+    .select {
+      display: flex;
+      align-items: center;
+      padding: 0;
+      background: none;
+    }
+    .select::picker-icon {
+      content: "";
+      width: 14px;
+      height: 14px;
+      margin-left: auto;
+      margin-right: 2px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none' stroke='%230f2233' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5.25 7 9.25l4-4'/%3E%3C/svg%3E")
+        no-repeat center / 14px;
+      transition: rotate 0.15s;
+    }
+    .select:open::picker-icon {
+      rotate: 180deg;
+    }
+    /* Listan börjar i fältets vänsterkant: punkt (9 px), mellanrum (14 px), ram och luft (18 px). */
+    .select::picker(select) {
+      /* Öppna nedåt i första hand, uppåt bara om listan inte får plats. */
+      position-try-order: normal;
+      margin: 8px 0 8px -41px;
+      min-width: calc(anchor-size(width) + 41px + 18px);
+      padding: 6px;
+      border: 1px solid var(--color-line);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+    }
+    .select option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 48px;
+      padding: 0 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      color: var(--color-ink);
+      cursor: pointer;
+    }
+    .select option:hover,
+    .select option:focus-visible {
+      background: var(--color-soft);
+      outline: none;
+    }
+    .select option::checkmark {
+      order: 1;
+      margin-left: auto;
+      content: "";
+      width: 14px;
+      height: 14px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none' stroke='%232166ef' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 7.5 5.5 10.5 11.5 3.5'/%3E%3C/svg%3E")
+        no-repeat center / 14px;
+    }
+  }
+}
+
+/*
+ * Fältet runt tjänstemenyn behåller fokusutseendet medan listan är öppen
+ * (fokus ligger då i listan). Utanför lager så att det går före Tailwinds klasser.
+ */
+:has(> .select:open) {
+  border-color: var(--color-ink);
+  background: #fff;
 }
