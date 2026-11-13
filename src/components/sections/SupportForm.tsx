@@ -143,23 +143,26 @@ export function SupportForm() {
         <input id="support-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <button
-        type="submit"
-        disabled={sending}
-        className="mt-[6px] inline-flex cursor-pointer items-center justify-center gap-[8px] justify-self-start rounded-[10px] border-0 bg-dark px-[22px] py-[14px] text-[16px] font-extrabold whitespace-nowrap text-white transition-opacity duration-150 hover:opacity-[.88] disabled:cursor-default disabled:opacity-60"
-      >
-        {sending ? "Skickar" : "Skicka"}
-      </button>
+      {/* Knappen och statusraden delar ruta, så att en tom statusrad inte lägger till formulärets radavstånd. */}
+      <div className="mt-[6px]">
+        <button
+          type="submit"
+          disabled={sending}
+          className="flex w-fit cursor-pointer items-center justify-center gap-[8px] rounded-[10px] border-0 bg-dark px-[22px] py-[14px] text-[16px] font-extrabold whitespace-nowrap text-white transition-opacity duration-150 hover:opacity-[.88] disabled:cursor-default disabled:opacity-60"
+        >
+          {sending ? "Skickar" : "Skicka"}
+        </button>
 
-      <div aria-live="polite" className="font-bold">
-        {status === "sent" && "Tack, vi hör av oss."}
-        {status === "error" && (
-          <>
-            Det gick inte att skicka. Mejla oss på <a href={`mailto:${email}`} className="underline">
-              {email}
-            </a>
-          </>
-        )}
+        <div aria-live="polite" className="mt-[10px] font-bold empty:mt-0">
+          {status === "sent" && "Tack, vi hör av oss."}
+          {status === "error" && (
+            <>
+              Det gick inte att skicka. Mejla oss på <a href={`mailto:${email}`} className="underline">
+                {email}
+              </a>
+            </>
+          )}
+        </div>
       </div>
     </form>
   );
