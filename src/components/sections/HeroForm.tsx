@@ -87,7 +87,7 @@ export function HeroForm() {
                         aria-label="Tjänst"
                         value={service}
                         onChange={(e) => setService(e.target.value as ServiceId)}
-                        className={inputClass}
+                        className={`select ${inputClass}`}
                       >
                         {services.map((s) => (
                           <option key={s.id} value={s.id}>
