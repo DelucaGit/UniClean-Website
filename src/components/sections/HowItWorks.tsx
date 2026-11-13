@@ -57,15 +57,15 @@ export function HowItWorks() {
                   }`}
                 >
                   <span
-                    className={`grid h-[40px] w-[40px] place-items-center rounded-full font-black ${
+                    className={`grid h-[40px] w-[40px] place-items-center rounded-full text-[16px] font-black ${
                       on ? "bg-accent text-white" : "bg-white"
                     }`}
                   >
                     {i + 1}
                   </span>
-                  <span>
+                  <span className="text-[16px]">
                     <b className="block text-[20px] font-extrabold">{step.title}</b>
-                    <span className="text-[16px] text-mute">{step.text}</span>
+                    <span className="text-mute">{step.text}</span>
                   </span>
                 </button>
               );
