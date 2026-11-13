@@ -17,6 +17,8 @@ const nextConfig: NextConfig = {
   agentRules: false,
   images: {
     formats: ["image/avif", "image/webp"],
+    // 90 används för skärmbilderna från appen, där text annars blir suddig.
+    qualities: [75, 90],
   },
   async redirects() {
     const entries = Object.entries(oldAddresses);

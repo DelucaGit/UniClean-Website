@@ -84,7 +84,7 @@ export function HowItWorks() {
                     aria-hidden={on ? undefined : true}
                     width={600}
                     height={1211}
-                    sizes="(max-width: 960px) 256px, 286px"
+                    quality={90}
                     className={`block w-full rounded-[24px] transition-opacity duration-[250ms] motion-reduce:transition-none ${
                       i === 0 ? "h-auto" : "absolute inset-0 h-full"
                     } ${on ? "opacity-100" : "opacity-0"}`}
