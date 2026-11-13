@@ -24,7 +24,6 @@ export function Hero() {
           <PhoneFrame
             src="/app/app-hem.jpg"
             alt="UniClean-appens startsida"
-            sizes="(max-width: 960px) 156px, 202px"
             className="absolute bottom-[28px] left-[-46px] w-[216px] max-[960px]:left-[14px] max-[960px]:w-[170px]"
           />
         </div>
