@@ -15,6 +15,8 @@ const oldAddresses: Record<string, string> = {
 const nextConfig: NextConfig = {
   trailingSlash: true,
   agentRules: false,
+  // Döljer Next.js utvecklingsindikator (loggan nere till vänster i npm run dev).
+  devIndicators: false,
   images: {
     formats: ["image/avif", "image/webp"],
     // 90 används för skärmbilderna från appen, där text annars blir suddig.
