@@ -9,3 +9,17 @@
 7. Länkar, telefonnummer och e-post hämtas alltid från `src/config/site.ts`, aldrig hårdkodat i komponenter.
 8. Kör `npm run lint` och `npm test` (som också bygger) innan du öppnar en PR.
 9. Sajten byggs med webpack. Ta inte bort `--webpack` i `package.json`, eftersom Turbopack kraschar hos Hostinger.
+
+## Agent skills
+
+### Issue tracker
+
+Issues och specar ligger i GitHub Issues och hanteras med `gh`. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+De fem standardetiketterna används oförändrade. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: `GLOSSARY.md` och `docs/adr/` i repots rot. See `docs/agents/domain.md`.
