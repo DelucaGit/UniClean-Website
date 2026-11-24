@@ -28,11 +28,12 @@ export const site: SiteConfig = {
   name: "UniClean",
   url: "https://uniclean.nu",
   links: {
-    app: PLACEHOLDER,
-    login: PLACEHOLDER,
+    // TILLFÄLLIGA: app och login ska bytas före lansering (#48). Byt bara här.
+    app: "https://uniclean-partner.onrender.com/kund",
+    login: "https://uniclean-partner.onrender.com/kund",
     partner: PLACEHOLDER,
     partnerLogin: PLACEHOLDER,
-    googleReviews: PLACEHOLDER,
+    googleReviews: "https://www.google.com/maps?cid=13736541404779941323&hl=sv",
   },
   contact: {
     email: "bokning@uniclean.nu",

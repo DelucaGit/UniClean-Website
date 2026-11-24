@@ -2,31 +2,16 @@
 
 import { useState, type FormEvent } from "react";
 import { site } from "@/config/site";
+import { validateSupport, type SupportErrors } from "@/lib/support";
 
-type Field = "name" | "email" | "message";
-type Errors = Partial<Record<Field, string>>;
 type Status = "idle" | "sending" | "sent" | "error";
-
-const MAX_MESSAGE = 2000;
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const fieldClass =
   "block w-full resize-y rounded-[10px] border-2 border-transparent bg-soft px-[16px] py-[15px] font-semibold text-ink outline-none focus:border-ink focus:bg-white";
 const errorClass = "mt-[6px] text-[14px] font-bold text-ink";
 
-function validate(values: Record<Field, string>): Errors {
-  const errors: Errors = {};
-  if (!values.name) errors.name = "Fyll i ditt namn.";
-  if (!values.email) errors.email = "Fyll i din e-post.";
-  else if (!EMAIL_PATTERN.test(values.email)) errors.email = "Fyll i en giltig e-postadress.";
-  if (!values.message) errors.message = "Skriv vad det gäller.";
-  else if (values.message.length > MAX_MESSAGE)
-    errors.message = "Meddelandet får vara högst 2 000 tecken.";
-  return errors;
-}
-
 export function SupportForm() {
-  const [errors, setErrors] = useState<Errors>({});
+  const [errors, setErrors] = useState<SupportErrors>({});
   const [status, setStatus] = useState<Status>("idle");
   const { email } = site.contact;
   const sending = status === "sending";
@@ -43,7 +28,7 @@ export function SupportForm() {
       message: String(data.get("message") ?? "").trim(),
     };
 
-    const found = validate(values);
+    const found = validateSupport(values);
     setErrors(found);
     const firstInvalid = (["name", "email", "message"] as const).find((field) => found[field]);
     if (firstInvalid) {
