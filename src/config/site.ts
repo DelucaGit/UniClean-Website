@@ -28,7 +28,8 @@ export const site: SiteConfig = {
   name: "UniClean",
   url: "https://uniclean.nu",
   links: {
-    app: PLACEHOLDER,
+    // TILLFÄLLIG: adressen ska bytas före lansering (#48). Byt bara här.
+    app: "https://uniclean-partner.onrender.com/kund",
     login: PLACEHOLDER,
     partner: PLACEHOLDER,
     partnerLogin: PLACEHOLDER,
