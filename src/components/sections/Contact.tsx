@@ -1,5 +1,5 @@
 import { Container } from "@/components/ui/Container";
-import { SupportForm } from "@/components/sections/SupportForm";
+// import { SupportForm } from "@/components/sections/SupportForm";
 import { isPlaceholder, site } from "@/config/site";
 
 const itemClass = "border-b border-line py-[18px]";
@@ -33,10 +33,12 @@ export function Contact() {
             )}
           </div>
         </div>
-        {/* Nollar sektionspaddingen så att formuläret linjerar med vänsterkolumnen. */}
+        {/* TILLFÄLLIGT BORTTAGET (#105): slå på formuläret och importen igen när mejlen är klar.
+            Nollar sektionspaddingen så att formuläret linjerar med vänsterkolumnen.
         <div className="[&>section]:p-0">
           <SupportForm />
         </div>
+        */}
       </Container>
     </section>
   );
