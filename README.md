@@ -1,63 +1,59 @@
 # UniClean Website
 
-Ny webbplats för UniClean (uniclean.nu). Besökaren ska gå direkt till bokning i appen i stället för att begära offert.
+Det här är koden till [uniclean.nu](https://uniclean.nu), där besökaren kan läsa om våra städtjänster och gå vidare till appen för att boka. Tidigare fick man begära en offert. Nu ska det gå att komma direkt till bokningen i stället.
 
-- **Utgångspunkt:** den publicerade sajten på `main`. Äldre issues och PRD:n (#1) är historik.
-- **Design:** sajtens nuvarande design gäller. `design/prototyp/index.html` är den ursprungliga prototypen.
-- **Arbetsregler för agenter:** se `AGENTS.md`.
+Själva bokningen, priserna och inloggningen sköts av appen. Den här sajten visar vägen dit.
 
-Ändringar görs i en egen branch med en liten PR.
+## Kom igång på din dator
 
-## Starta projektet
-
-Kräver Node.js 20.9 eller senare.
+Du behöver [Node.js](https://nodejs.org) 20.9 eller senare. Öppna en terminal i projektmappen och kör:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Öppna sedan http://localhost:3000.
+Öppna sedan http://localhost:3000 i webbläsaren. När du sparar en ändring i koden syns den direkt på sidan.
 
-Övriga kommandon:
+Du behöver inga lösenord eller inställningar för att se och ändra sajten.
 
-- `npm run lint` kontrollerar koden med ESLint.
-- `npm run build` bygger sajten för produktion.
-- `npm run start` kör den byggda sajten.
-- `npm test` bygger sajten och kör testerna. Nya testfiler läggs till i `test` i `package.json`.
+## Var ändrar jag vad?
 
-Bilderna skalas om och skickas som AVIF eller WebP av Next.js bildoptimering. Den kräver att sajten körs som Node-server (`npm run start`) och fungerar inte med statisk export.
-
-## Supportformuläret
-
-Formuläret skickar ärendet till `POST /api/support/`, som mejlar det vidare med nodemailer. Sajten måste därför köras som Node-server (`npm run start`), inte som statisk export.
-
-Kopiera `.env.example` till `.env.local` och fyll i värdena. `.env.local` ska aldrig committas.
-
-| Variabel | Beskrivning |
+| Jag vill ändra | Öppna |
 | --- | --- |
-| `SMTP_HOST` | Mejlserverns adress. Krävs. |
-| `SMTP_PORT` | Mejlserverns port. 587 om inget anges. 465 rekommenderas och ger krypterad anslutning direkt. |
-| `SMTP_USER` | Användarnamn hos mejlservern. Lämnas tomt om servern inte kräver inloggning. |
-| `SMTP_PASS` | Lösenord hos mejlservern. |
-| `SUPPORT_TO` | Adressen som ärendena skickas till. `bokning@uniclean.nu` om inget anges. |
-| `SUPPORT_FROM` | Avsändaradressen på mejlen. Ska vara en adress som mejlservern får skicka från. |
-| `TRUSTED_PROXY_HOPS` | Antal betrodda proxyer framför sajten. 1 om inget anges. |
+| Länkar, e-post eller telefonnummer | `src/config/site.ts` |
+| Tjänsterna, till exempel priset för fönsterputs | `src/content/services.ts` |
+| Stegen under "Så funkar det" | `src/content/steps.ts` |
+| Google-omdömen och betyg | `src/content/reviews.ts` |
+| Menyn | `src/content/nav.ts` |
+| Videon | `src/content/video.ts` |
+| Övriga texter på startsidan | `src/components/sections/`, en fil per avsnitt |
+| I vilken ordning avsnitten kommer | `src/app/page.tsx` |
+| Integritetspolicyn | `src/app/integritetspolicy/page.tsx` |
+| Bilder | `public/img/` och `public/app/` (skärmbilder från appen) |
 
-### Mejl hos Hostinger
+Några saker är bra att veta:
 
-Sätt `SMTP_HOST=smtp.hostinger.com` och `SMTP_PORT=465`. `SMTP_USER` är hela e-postadressen och `SMTP_PASS` är brevlådans lösenord. Låt `SUPPORT_FROM` vara samma adress som `SMTP_USER`.
+- Länkar och kontaktuppgifter skrivs bara i `src/config/site.ts`. Då räcker det att ändra på ett ställe.
+- Omdömena är riktiga och ska stå precis som kunden skrev dem.
+- Videoavsnittet visas först när det finns en video, och telefonnumret först när det är ifyllt.
+- Byter du ett foto, skriv upp var det kommer från i [docs/bildkallor.md](docs/bildkallor.md).
 
-### Antal betrodda proxyer
+## Så gör du en ändring
 
-Besökarens IP-adress läses från höger i `X-Forwarded-For`. `TRUSTED_PROXY_HOPS` anger vilken plats från höger som gäller:
+1. Skapa en egen branch från `main`.
+2. Gör en sak i taget, så att ändringen blir lätt att granska.
+3. Kör `npm run lint`, som letar efter fel i koden.
+4. Kör `npm test`, som bygger sajten och testar den.
+5. Öppna en pull request och vänta på klartecken innan du mergar. En merge till `main` kan publicera sajten.
 
-- `1`: en proxy som lägger till besökarens adress sist. Det är standard.
-- `2`: två proxyer, till exempel ett CDN framför värdens egen proxy.
-- `0`: ingen proxy är betrodd. Då delar alla besökare en gräns.
+Är något trasigt, eller har du ett önskemål? Skriv en [issue](https://github.com/DelucaGit/UniClean-Website/issues). Där ser du också vad som är kvar att göra.
 
-Ett för högt värde gör att besökaren kan förfalska sin adress eller att alla delar en gräns. Ett för lågt värde gör att besökare bakom samma proxy delar gräns. Värdet för Hostinger kontrolleras i #46. Servern ska bara gå att nå genom de betrodda proxyerna.
+## Läs mer
 
-### Gränser
+- [Drift](docs/drift.md): hur sajten körs hos Hostinger, hur supportformuläret fungerar och vad du gör när något går fel.
+- [Gamla adresser](docs/gamla-adresser.md): vart länkarna från den gamla sajten leder.
+- [Bildkällor](docs/bildkallor.md): var bilderna kommer från.
+- [AGENTS.md](AGENTS.md): regler för AI-agenter som arbetar i projektet.
 
-Varje IP-adress får göra fem försök per tio minuter, och ogiltiga försök räknas. IPv6-adresser i samma /64-nät räknas som en adress. Anrop utan giltig adress delar en gräns. Räknaren rymmer 5 000 adresser, och när den är full delar nya besökare samma gräns. Totalt skickas högst 60 ärenden per timme. Räknarna ligger i minnet, nollställs när servern startas om och förutsätter en enda serverprocess.
+Den första prototypen finns kvar i `design/prototyp/index.html`. Den är bara historik. Det är den publicerade sajten som gäller.
