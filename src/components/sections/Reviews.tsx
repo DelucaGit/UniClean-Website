@@ -46,10 +46,7 @@ export function Reviews() {
                 >
                   {review.name.charAt(0)}
                 </span>
-                <div>
-                  <b className="block text-[15.5px] leading-[1.25]">{review.name}</b>
-                  <small className="text-[13px] text-mute">{review.time}</small>
-                </div>
+                <b className="text-[15.5px] leading-[1.25]">{review.name}</b>
                 <GoogleLogo className="ml-auto h-[20px] w-[20px] flex-none" />
               </div>
               <Stars label="5 av 5" />
