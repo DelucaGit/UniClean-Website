@@ -8,7 +8,7 @@ export type SupportMail = {
 };
 
 /** Tar bort radbrytningar så att värdet inte kan lägga till egna mejlhuvuden. */
-export function singleLine(value: string): string {
+function singleLine(value: string): string {
   return value.replace(/[\r\n]+/g, " ").trim();
 }
 
@@ -26,6 +26,10 @@ export async function sendSupportMail({ name, email, message }: SupportMail): Pr
     host: SMTP_HOST,
     port,
     secure: port === 465,
+    // Utan TLS avbryts anslutningen innan inloggningen, oavsett port.
+    requireTLS: true,
+    // Uttryckligt, så att NODE_TLS_REJECT_UNAUTHORIZED inte kan stänga av certifikatkontrollen.
+    tls: { rejectUnauthorized: true },
     auth: SMTP_USER ? { user: SMTP_USER, pass: SMTP_PASS ?? "" } : undefined,
     connectionTimeout: 10_000,
     greetingTimeout: 10_000,

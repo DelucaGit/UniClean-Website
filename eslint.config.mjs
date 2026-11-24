@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Lokala worktrees:
+    ".claude/**",
     // Designprototyper, inte en del av appen:
     "design/**",
     "prototyp/**",
