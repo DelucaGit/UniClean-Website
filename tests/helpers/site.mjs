@@ -28,7 +28,15 @@ export async function startSite(env = {}) {
   }
 
   // Tomma värden hindrar Next.js från att läsa riktiga inställningar ur .env-filer.
-  const mailDefaults = { SMTP_HOST: "", SMTP_PORT: "", SMTP_USER: "", SMTP_PASS: "", SUPPORT_TO: "", SUPPORT_FROM: "" };
+  const neutralDefaults = {
+    SMTP_HOST: "",
+    SMTP_PORT: "",
+    SMTP_USER: "",
+    SMTP_PASS: "",
+    SUPPORT_TO: "",
+    SUPPORT_FROM: "",
+    TRUSTED_PROXY_HOPS: "",
+  };
   const inherited = { ...process.env };
   delete inherited.NODE_EXTRA_CA_CERTS;
   delete inherited.NODE_TLS_REJECT_UNAUTHORIZED;
@@ -36,7 +44,7 @@ export async function startSite(env = {}) {
   const next = path.join(root, "node_modules", "next", "dist", "bin", "next");
   const child = spawn(process.execPath, [next, "start", "-H", "127.0.0.1", "-p", "0"], {
     cwd: root,
-    env: { ...inherited, ...mailDefaults, NODE_ENV: "production", ...env },
+    env: { ...inherited, ...neutralDefaults, NODE_ENV: "production", ...env },
     stdio: ["ignore", "pipe", "pipe"],
   });
   running.add(child);

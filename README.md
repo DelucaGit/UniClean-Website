@@ -24,6 +24,7 @@ npm run dev
 - `npm run lint` kontrollerar koden med ESLint.
 - `npm run build` bygger sajten för produktion.
 - `npm run start` kör den byggda sajten.
+- `npm test` bygger sajten och kör testerna. Nya testfiler läggs till i `test` i `package.json`.
 
 Bilderna skalas om och skickas som AVIF eller WebP av Next.js bildoptimering. Den kräver att sajten körs som Node-server (`npm run start`) och fungerar inte med statisk export.
 
@@ -59,4 +60,4 @@ Ett för högt värde gör att besökaren kan förfalska sin adress eller att al
 
 ### Gränser
 
-Varje IP-adress får göra fem försök per tio minuter, och ogiltiga försök räknas. IPv6-adresser i samma /64-nät räknas som en adress. Anrop utan giltig adress delar en gräns. Totalt skickas högst 60 ärenden per timme. Räknarna ligger i minnet, nollställs när servern startas om och förutsätter en enda serverprocess.
+Varje IP-adress får göra fem försök per tio minuter, och ogiltiga försök räknas. IPv6-adresser i samma /64-nät räknas som en adress. Anrop utan giltig adress delar en gräns. Räknaren rymmer 5 000 adresser, och när den är full delar nya besökare samma gräns. Totalt skickas högst 60 ärenden per timme. Räknarna ligger i minnet, nollställs när servern startas om och förutsätter en enda serverprocess.

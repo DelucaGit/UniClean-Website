@@ -78,7 +78,7 @@ const from = (address) => ({ headers: { "x-forwarded-for": address } });
 async function start(t, env = {}) {
   const mail = await startMailServer();
   t.after(() => mail.stop());
-  const site = await startSite({ ...mail.env, TRUSTED_PROXY_HOPS: "", ...env });
+  const site = await startSite({ ...mail.env, ...env });
   t.after(() => site.stop());
   return { mail, site };
 }
@@ -91,6 +91,7 @@ async function statuses(count, next) {
 }
 
 const fiveThenLimited = [200, 200, 200, 200, 200, 429];
+const fiveInvalidThenLimited = [400, 400, 400, 400, 400, 429];
 
 test("fälten kontrolleras på servern", async (t) => {
   const { site, mail } = await start(t);
@@ -158,6 +159,16 @@ test("för stora och felaktiga kroppar avvisas snabbt", async (t) => {
     assert.equal(await send(site, body), 400, String(body));
   }
   assert.equal(mail.mails.length, 2);
+});
+
+test("skadlig e-post som ryms i 16 kB avvisas snabbt i fältkontrollen", async (t) => {
+  const { site } = await start(t);
+  // Den första stoppas av längden, de andra når mönstret.
+  for (const email of [`a@${"a.".repeat(8000)}@`, `a@${"a.".repeat(125)}@`, "a".repeat(254)]) {
+    const started = performance.now();
+    assert.equal(await send(site, { ...valid, email }), 400);
+    assert.ok(performance.now() - started < 1000);
+  }
 });
 
 test("servern svarar 413 innan en kropp utan slut är färdigläst", async (t) => {
@@ -290,7 +301,7 @@ test("räknaren har ett tak och glömmer inte en spärrad adress när den är fu
   const { site } = await start(t);
   const invalid = { name: "" };
   const blocked = from("203.0.113.7");
-  assert.deepEqual(await statuses(6, () => send(site, invalid, blocked)), [400, 400, 400, 400, 400, 429]);
+  assert.deepEqual(await statuses(6, () => send(site, invalid, blocked)), fiveInvalidThenLimited);
 
   // 4 999 adresser till fyller räknaren (5 000).
   let next = 0;
@@ -305,7 +316,7 @@ test("räknaren har ett tak och glömmer inte en spärrad adress när den är fu
   // Nya adresser delar sedan en gräns i stället för att tränga ut gamla.
   assert.deepEqual(
     await statuses(6, (index) => send(site, invalid, from(`10.2.0.${index}`))),
-    [400, 400, 400, 400, 400, 429],
+    fiveInvalidThenLimited,
   );
   assert.equal(await send(site, invalid, blocked), 429);
   assert.equal(await send(site, invalid, from("10.1.0.0")), 400, "en känd adress har kvar sin egen gräns");

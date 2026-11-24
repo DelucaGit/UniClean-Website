@@ -8,7 +8,7 @@ export type SupportMail = {
 };
 
 /** Tar bort radbrytningar så att värdet inte kan lägga till egna mejlhuvuden. */
-export function singleLine(value: string): string {
+function singleLine(value: string): string {
   return value.replace(/[\r\n]+/g, " ").trim();
 }
 

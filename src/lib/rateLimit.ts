@@ -96,7 +96,7 @@ export function ticketLimitReached(): boolean {
  * Skickar ett ärende och räknar det mot det totala taket. Ett misslyckat ärende räknas inte.
  * Platsen tas direkt, så anropa i samma steg som ticketLimitReached(), utan await emellan.
  */
-export async function countTicket(send: () => Promise<void>): Promise<void> {
+export async function sendAndCountTicket(send: () => Promise<void>): Promise<void> {
   sending++;
   try {
     await send();

@@ -1,5 +1,5 @@
 import { sendSupportMail } from "@/lib/mail";
-import { allowAttempt, clientAddress, countTicket, ticketLimitReached } from "@/lib/rateLimit";
+import { allowAttempt, clientAddress, sendAndCountTicket, ticketLimitReached } from "@/lib/rateLimit";
 import { validateSupport } from "@/lib/support";
 
 export const runtime = "nodejs";
@@ -74,7 +74,7 @@ export async function POST(request: Request): Promise<Response> {
   }
   const fields = body as Record<string, unknown>;
 
-  // Härifrån till countTicket() får inget await finnas, annars kan samtidiga ärenden gå förbi det totala taket.
+  // Härifrån till sendAndCountTicket() får inget await finnas, annars kan samtidiga ärenden gå förbi det totala taket.
   if (!allowAttempt(clientAddress(request)) || ticketLimitReached()) {
     return reply(429, { error: "För många ärenden. Försök igen om en stund." });
   }
@@ -88,7 +88,7 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   try {
-    await countTicket(() => sendSupportMail(values));
+    await sendAndCountTicket(() => sendSupportMail(values));
   } catch (error) {
     // Logga bara felet, aldrig meddelandets innehåll.
     console.error("Supportärendet kunde inte skickas:", error instanceof Error ? error.message : "okänt fel");
