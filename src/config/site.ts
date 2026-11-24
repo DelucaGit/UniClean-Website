@@ -32,7 +32,7 @@ export const site: SiteConfig = {
     login: PLACEHOLDER,
     partner: PLACEHOLDER,
     partnerLogin: PLACEHOLDER,
-    googleReviews: PLACEHOLDER,
+    googleReviews: "https://www.google.com/maps?cid=13736541404779941323&hl=sv",
   },
   contact: {
     email: "bokning@uniclean.nu",

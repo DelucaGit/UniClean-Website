@@ -9,8 +9,8 @@ export type Review = {
   color: string;
 };
 
-export const rating = "4,9";
-export const count = 58;
+export const rating = "4,8";
+export const count = 65;
 
 export const reviews: Review[] = [
   {
