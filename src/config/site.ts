@@ -31,7 +31,7 @@ export const site: SiteConfig = {
     // TILLFÄLLIGA: app och login ska bytas före lansering (#48). Byt bara här.
     app: "https://uniclean-partner.onrender.com/kund",
     login: "https://uniclean-partner.onrender.com/kund",
-    partner: PLACEHOLDER,
+    partner: "https://unique-sable-358e98.netlify.app",
     partnerLogin: PLACEHOLDER,
     googleReviews: "https://www.google.com/maps?cid=13736541404779941323&hl=sv",
   },
