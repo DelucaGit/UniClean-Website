@@ -2,7 +2,6 @@ import Image from "next/image";
 
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { TextLink } from "@/components/ui/TextLink";
 import { site } from "@/config/site";
 
 export function Partner() {
@@ -22,11 +21,10 @@ export function Partner() {
             <p className="mt-[12px]">
               Som partner tar du emot uppdrag nära dig i appen och bestämmer själv när du jobbar.
             </p>
-            <div className="mt-[28px] flex flex-wrap items-center gap-[26px]">
+            <div className="mt-[28px]">
               <Button href={site.links.partner} track="partner-sektion">
                 Ansök som partner
               </Button>
-              <TextLink href={site.links.partnerLogin}>Logga in</TextLink>
             </div>
           </div>
         </div>

@@ -14,7 +14,6 @@ export type SiteConfig = {
     app: string;
     login: string;
     partner: string;
-    partnerLogin: string;
     googleReviews: string;
   };
   contact: {
@@ -32,7 +31,6 @@ export const site: SiteConfig = {
     app: "https://uniclean-partner.onrender.com/kund",
     login: "https://uniclean-partner.onrender.com/kund",
     partner: "https://unique-sable-358e98.netlify.app",
-    partnerLogin: PLACEHOLDER,
     googleReviews: "https://www.google.com/maps?cid=13736541404779941323&hl=sv",
   },
   contact: {
