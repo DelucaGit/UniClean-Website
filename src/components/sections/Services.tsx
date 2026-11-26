@@ -5,7 +5,7 @@ import { services } from "@/content/services";
 
 export function Services() {
   return (
-    <section id="tjanster" className="pt-0">
+    <section id="tjanster">
       <Container>
         <h2>Tjänster</h2>
         <div className="mt-[30px] grid grid-cols-4 gap-[14px] max-[960px]:grid-cols-2 max-[560px]:grid-cols-1">
