@@ -6,7 +6,6 @@ import type { NavLink } from "@/content/nav";
 
 type MobileMenuProps = {
   links: readonly NavLink[];
-  loginHref: string;
 };
 
 const PANEL_ID = "mobilmeny";
@@ -14,7 +13,7 @@ const PANEL_ID = "mobilmeny";
 const panelLink =
   "rounded-r px-[12px] py-[12px] text-[16px] font-bold hover:bg-white/[.12]";
 
-export function MobileMenu({ links, loginHref }: MobileMenuProps) {
+export function MobileMenu({ links }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -73,9 +72,6 @@ export function MobileMenu({ links, loginHref }: MobileMenuProps) {
               {link.label}
             </a>
           ))}
-          <a href={loginHref} onClick={close} className={panelLink}>
-            Logga in
-          </a>
         </nav>
       </div>
     </div>

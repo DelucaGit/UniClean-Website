@@ -1,4 +1,3 @@
-import { Apps } from "@/components/sections/Apps";
 import { Contact } from "@/components/sections/Contact";
 import { Hero } from "@/components/sections/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -20,7 +19,6 @@ export default function Home() {
       <Reviews />
       <Video />
       <Partner />
-      <Apps />
       <Contact />
     </main>
   );

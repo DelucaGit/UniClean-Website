@@ -1,7 +1,5 @@
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { PhoneFrame } from "@/components/ui/PhoneFrame";
-import { site } from "@/config/site";
 
 const points = [
   "Du kan boka anonymt",
@@ -37,11 +35,6 @@ export function Trust() {
               </li>
             ))}
           </ul>
-          <div className="mt-[28px] flex flex-wrap items-center gap-[26px]">
-            <Button variant="white" href={site.links.app} track="boka-trygghet">
-              Boka nu
-            </Button>
-          </div>
         </div>
       </Container>
     </section>
