@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/Button";
-import { TextLink } from "@/components/ui/TextLink";
 import { bookingUrl, site } from "@/config/site";
 
 /**
@@ -16,7 +15,7 @@ export function HeroForm() {
         Välj tjänst, se vad det kostar efter RUT och boka direkt i appen. Du behöver inte begära
         offert.
       </p>
-      <div className="mb-[22px] flex flex-wrap gap-[12px]">
+      <div className="flex flex-wrap gap-[12px]">
         <Button variant="accent" href={bookingUrl()} track="boka-startvy">
           Boka städning
         </Button>
@@ -24,7 +23,6 @@ export function HeroForm() {
           Bli partner
         </Button>
       </div>
-      <TextLink href={site.links.login}>Logga in för att se dina bokningar</TextLink>
     </div>
   );
 }

@@ -24,13 +24,10 @@ export function Header() {
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-[6px]">
-          <a href={site.links.login} className={`${textLink} max-[960px]:hidden`}>
-            Logga in
-          </a>
           <Button href={site.links.app} variant="white" size="pill" track="boka-meny">
             Boka nu
           </Button>
-          <MobileMenu links={navLinks} loginHref={site.links.login} />
+          <MobileMenu links={navLinks} />
         </div>
       </Container>
     </header>

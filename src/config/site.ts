@@ -12,7 +12,6 @@ export type SiteConfig = {
   url: string;
   links: {
     app: string;
-    login: string;
     partner: string;
     googleReviews: string;
   };
@@ -27,9 +26,8 @@ export const site: SiteConfig = {
   name: "UniClean",
   url: "https://uniclean.nu",
   links: {
-    // TILLFÄLLIGA: app och login ska bytas före lansering (#48). Byt bara här.
+    // TILLFÄLLIG: app ska bytas före lansering (#48). Byt bara här.
     app: "https://uniclean-partner.onrender.com/kund",
-    login: "https://uniclean-partner.onrender.com/kund",
     partner: "https://unique-sable-358e98.netlify.app",
     googleReviews: "https://www.google.com/maps?cid=13736541404779941323&hl=sv",
   },
