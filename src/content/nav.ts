@@ -4,8 +4,8 @@ export type NavLink = {
 };
 
 export const navLinks: readonly NavLink[] = [
-  { label: "Tjänster", href: "/#tjanster" },
   { label: "Så funkar det", href: "/#sa-funkar-det" },
+  { label: "Tjänster", href: "/#tjanster" },
   { label: "Omdömen", href: "/#omdomen" },
   { label: "Jobba hos oss", href: "/#partner" },
   { label: "Hjälp", href: "/#kontakt" },
