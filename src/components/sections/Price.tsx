@@ -1,7 +1,5 @@
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { PhoneFrame } from "@/components/ui/PhoneFrame";
-import { site } from "@/config/site";
 
 export function Price() {
   return (
@@ -20,11 +18,6 @@ export function Price() {
             Ange hur stort ditt hem är, så räknar appen ut tid och pris efter RUT. Du betalar för
             den tid städningen faktiskt tar och aldrig mer än det pris du fick.
           </p>
-          <div className="mt-[28px] flex flex-wrap items-center gap-[26px]">
-            <Button href={site.links.app} track="boka-pris">
-              Räkna ut ditt pris
-            </Button>
-          </div>
         </div>
       </Container>
     </section>
