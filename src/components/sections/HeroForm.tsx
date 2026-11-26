@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/Button";
-import { bookingUrl } from "@/config/site";
+import { bookingUrl, site } from "@/config/site";
 
 /**
  * Tillfälligt utan fält för tjänst och postnummer, eftersom appen inte tar emot
- * dem. "Bli partner" går till sektionen på sidan tills ansökningslänken finns (#48).
+ * dem.
  */
 export function HeroForm() {
   return (
@@ -19,7 +19,7 @@ export function HeroForm() {
         <Button variant="accent" href={bookingUrl()} track="boka-startvy">
           Boka städning
         </Button>
-        <Button href="#partner" track="partner-startvy">
+        <Button href={site.links.partner} track="partner-startvy">
           Bli partner
         </Button>
       </div>
