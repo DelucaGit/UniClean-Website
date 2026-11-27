@@ -1,10 +1,6 @@
 import { Button } from "@/components/ui/Button";
-import { bookingUrl, site } from "@/config/site";
+import { site } from "@/config/site";
 
-/**
- * Tillfälligt utan fält för tjänst och postnummer, eftersom appen inte tar emot
- * dem.
- */
 export function HeroForm() {
   return (
     <div>
@@ -16,7 +12,7 @@ export function HeroForm() {
         offert.
       </p>
       <div className="flex flex-wrap gap-[12px]">
-        <Button variant="accent" href={bookingUrl()} track="boka-startvy">
+        <Button variant="accent" href={site.links.app} track="boka-startvy">
           Boka städning
         </Button>
         <Button href={site.links.partner} track="partner-startvy">

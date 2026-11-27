@@ -1,5 +1,3 @@
-import type { ServiceId } from "@/content/services";
-
 /** Värde för länkar och uppgifter som ännu inte är levererade. */
 export const PLACEHOLDER = "#";
 
@@ -37,17 +35,3 @@ export const site: SiteConfig = {
     phoneHref: PLACEHOLDER,
   },
 };
-
-export type BookingParams = {
-  service?: ServiceId;
-  postnummer?: string;
-};
-
-/**
- * Länk till bokningen i appen. Returnerar i dag bara `links.app`.
- * Parametrarna läggs till i länken i #48.
- */
-export function bookingUrl(params: BookingParams = {}): string {
-  void params;
-  return site.links.app;
-}
