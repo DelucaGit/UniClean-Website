@@ -25,6 +25,6 @@ export const services: readonly Service[] = [
   {
     id: "fonsterputs",
     name: "Fönsterputs",
-    description: "200 kr per fönster.",
+    description: "Putsning av hemmets fönster. Pris efter antal fönster.",
   },
 ];
