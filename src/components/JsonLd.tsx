@@ -1,4 +1,4 @@
-import { isPlaceholder, site } from "@/config/site";
+import { site } from "@/config/site";
 import { count, rating } from "@/content/reviews";
 
 /** Strukturerad data (schema.org) om företaget och dess Google-betyg. */
@@ -12,9 +12,7 @@ export function JsonLd() {
     image: `${site.url}/og.jpg`,
     email: site.contact.email,
     // Telefonnumret tas bara med när det riktiga numret är inlagt.
-    ...(isPlaceholder(site.contact.phoneHref)
-      ? {}
-      : { telephone: site.contact.phoneHref.replace(/^tel:/, "") }),
+    ...(site.contact.phone ? { telephone: site.contact.phone.href.replace(/^tel:/, "") } : {}),
     aggregateRating: {
       "@type": "AggregateRating",
       // JSON-LD kräver punkt som decimaltecken.

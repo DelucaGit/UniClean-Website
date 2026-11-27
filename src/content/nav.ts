@@ -1,12 +1,24 @@
+import { sectionHref, type SectionId } from "./sections";
+
 export type NavLink = {
   label: string;
   href: string;
 };
 
-export const navLinks: readonly NavLink[] = [
-  { label: "Så funkar det", href: "/#sa-funkar-det" },
-  { label: "Tjänster", href: "/#tjanster" },
-  { label: "Omdömen", href: "/#omdomen" },
-  { label: "Jobba hos oss", href: "/#partner" },
-  { label: "Hjälp", href: "/#kontakt" },
-];
+// Menyns etiketter, i menyns ordning.
+const labels = {
+  "sa-funkar-det": "Så funkar det",
+  tjanster: "Tjänster",
+  omdomen: "Omdömen",
+  partner: "Jobba hos oss",
+  kontakt: "Hjälp",
+} satisfies Partial<Record<SectionId, string>>;
+
+type MenuSection = keyof typeof labels;
+
+/** Samma etikett och länk som i menyn, för sidfoten och andra ställen. */
+export function menuLink(id: MenuSection): NavLink {
+  return { label: labels[id], href: sectionHref(id) };
+}
+
+export const navLinks: readonly NavLink[] = (Object.keys(labels) as MenuSection[]).map(menuLink);

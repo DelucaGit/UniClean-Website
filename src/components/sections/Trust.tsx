@@ -1,3 +1,4 @@
+import { sectionId } from "@/content/sections";
 import { Container } from "@/components/ui/Container";
 import { PhoneFrame } from "@/components/ui/PhoneFrame";
 
@@ -10,7 +11,7 @@ const points = [
 
 export function Trust() {
   return (
-    <section id="trygghet" className="dark">
+    <section id={sectionId("trygghet")} className="dark">
       <Container className="grid grid-cols-2 items-center gap-[84px] max-[960px]:grid-cols-1 max-[960px]:gap-[40px]">
         <div className="order-2 grid aspect-[1/.92] place-items-center overflow-hidden rounded-r bg-[rgba(255,255,255,.07)] max-[960px]:order-none">
           <PhoneFrame

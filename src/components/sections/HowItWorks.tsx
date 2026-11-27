@@ -1,5 +1,6 @@
 "use client";
 
+import { sectionId } from "@/content/sections";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/Container";
@@ -35,7 +36,7 @@ export function HowItWorks() {
   }, [auto]);
 
   return (
-    <section id="sa-funkar-det" className="soft">
+    <section id={sectionId("sa-funkar-det")} className="soft">
       <Container>
         <h2>Så funkar det</h2>
         <div className="mt-[36px] grid grid-cols-[1fr_300px] items-center gap-[84px] max-[960px]:grid-cols-1 max-[960px]:gap-[40px]">

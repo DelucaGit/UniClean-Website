@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "pretest": "npm run build",
-    "test": "node --test tests/headers.test.mjs tests/mail.test.mjs tests/support.test.mjs"
+    "test": "node --test tests/anchors.test.mjs tests/headers.test.mjs tests/mail.test.mjs tests/support.test.mjs"
   },
   "dependencies": {
     "next": "16.4.6",

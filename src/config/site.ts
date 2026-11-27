@@ -1,9 +1,9 @@
-/** Värde för länkar och uppgifter som ännu inte är levererade. */
-export const PLACEHOLDER = "#";
-
-export function isPlaceholder(value: string): boolean {
-  return value === PLACEHOLDER;
-}
+export type Phone = {
+  /** Som numret visas, till exempel "010-123 45 67". */
+  display: string;
+  /** Länken, till exempel "tel:+46101234567". */
+  href: string;
+};
 
 export type SiteConfig = {
   name: string;
@@ -15,8 +15,8 @@ export type SiteConfig = {
   };
   contact: {
     email: string;
-    phone: string;
-    phoneHref: string;
+    /** null tills det riktiga numret finns. Då visas inget telefonnummer någonstans. */
+    phone: Phone | null;
   };
 };
 
@@ -31,7 +31,6 @@ export const site: SiteConfig = {
   },
   contact: {
     email: "bokning@uniclean.nu",
-    phone: "010-XXX XX XX",
-    phoneHref: PLACEHOLDER,
+    phone: null,
   },
 };

@@ -1,13 +1,14 @@
 import type { NextConfig } from "next";
+import { sectionHref } from "./src/content/sections";
 
 // Gamla WordPress-adresser och deras mål på nya sajten.
 // Listan och motiveringen finns i docs/gamla-adresser.md.
 const oldAddresses: Record<string, string> = {
-  "/hemstadning-info-bokning": "/#tjanster",
-  "/fonsterputs-info-bokning": "/#tjanster",
-  "/flyttstadning-info-bokning": "/#tjanster",
-  "/bokning": "/#sa-funkar-det",
-  "/kontakt": "/#kontakt",
+  "/hemstadning-info-bokning": sectionHref("tjanster"),
+  "/fonsterputs-info-bokning": sectionHref("tjanster"),
+  "/flyttstadning-info-bokning": sectionHref("tjanster"),
+  "/bokning": sectionHref("sa-funkar-det"),
+  "/kontakt": sectionHref("kontakt"),
   "/vi-aterkommer-med-offert-inom-kort": "/",
   "/author/admin": "/",
 };

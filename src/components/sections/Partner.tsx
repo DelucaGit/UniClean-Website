@@ -1,3 +1,4 @@
+import { sectionId } from "@/content/sections";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/Button";
@@ -6,7 +7,7 @@ import { site } from "@/config/site";
 
 export function Partner() {
   return (
-    <section id="partner" className="pt-0">
+    <section id={sectionId("partner")} className="pt-0">
       <Container>
         <div className="relative flex min-h-[500px] items-end overflow-hidden rounded-r p-[32px] max-[560px]:min-h-[520px] max-[560px]:p-[12px]">
           <Image
