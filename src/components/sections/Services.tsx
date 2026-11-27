@@ -1,10 +1,11 @@
+import { sectionId } from "@/content/sections";
 import { ServiceIcon } from "@/components/icons/ServiceIcons";
 import { Container } from "@/components/ui/Container";
 import { services } from "@/content/services";
 
 export function Services() {
   return (
-    <section id="tjanster">
+    <section id={sectionId("tjanster")}>
       <Container>
         <h2>Tjänster</h2>
         <div className="mt-[30px] grid grid-cols-4 gap-[14px] max-[960px]:grid-cols-2 max-[560px]:grid-cols-1">

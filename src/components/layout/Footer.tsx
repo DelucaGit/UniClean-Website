@@ -1,18 +1,16 @@
-/* eslint-disable @next/next/no-html-link-for-pages -- vanliga länkar, så att webbläsaren själv scrollar till ankaret även från undersidor */
+// Vanliga <a>-länkar i stället för <Link>, så att webbläsaren själv scrollar till ankaret även från undersidor.
 
 import { Container } from "@/components/ui/Container";
 import { site } from "@/config/site";
+import { menuLink } from "@/content/nav";
+import { sectionHref } from "@/content/sections";
 import { services } from "@/content/services";
 
 // h2 i stället för h4 så att rubriknivåerna inte hoppar. Klasserna behåller utseendet.
 const headingClass = "mb-[16px] text-[17px] leading-[1.5] font-extrabold tracking-normal";
 const linkClass = "mb-[11px] block text-[15px] opacity-80 hover:opacity-100";
 
-const companyLinks = [
-  { label: "Så funkar det", href: "/#sa-funkar-det" },
-  { label: "Omdömen", href: "/#omdomen" },
-  { label: "Jobba hos oss", href: "/#partner" },
-];
+const companyLinks = [menuLink("sa-funkar-det"), menuLink("omdomen"), menuLink("partner")];
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -20,7 +18,7 @@ export function Footer() {
   return (
     <footer className="bg-dark pt-[64px] pb-[40px] text-white">
       <Container>
-        <a href="/#top" className="text-[26px] font-black tracking-[-0.01em]">
+        <a href={sectionHref("top")} className="text-[26px] font-black tracking-[-0.01em]">
           {site.name}
         </a>
         <div className="mt-[40px] mb-[56px] grid grid-cols-[1.4fr_repeat(3,1fr)] gap-[40px] max-[960px]:grid-cols-2">
@@ -33,7 +31,7 @@ export function Footer() {
           <div>
             <h2 className={headingClass}>Tjänster</h2>
             {services.map((service) => (
-              <a key={service.id} href="/#tjanster" className={linkClass}>
+              <a key={service.id} href={sectionHref("tjanster")} className={linkClass}>
                 {service.name}
               </a>
             ))}
@@ -48,10 +46,10 @@ export function Footer() {
           </div>
           <div>
             <h2 className={headingClass}>Hjälp</h2>
-            <a href="/#kontakt" className={linkClass}>
+            <a href={sectionHref("kontakt")} className={linkClass}>
               Kontakt
             </a>
-            <a href="/#kontakt" className={linkClass}>
+            <a href={sectionHref("kontakt")} className={linkClass}>
               Support
             </a>
             <a href={`mailto:${site.contact.email}`} className={linkClass}>

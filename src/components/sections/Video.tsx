@@ -1,5 +1,6 @@
 "use client";
 
+import { sectionId } from "@/content/sections";
 import Image from "next/image";
 import { useState } from "react";
 import { Container } from "@/components/ui/Container";
@@ -11,7 +12,7 @@ export function Video() {
   if (!video.src) return null;
 
   return (
-    <section id="video" className="!pt-0">
+    <section id={sectionId("video")} className="!pt-0">
       <Container>
         <h2>Se hur en bokning går till</h2>
         <div className="relative mt-[34px] aspect-[16/8] overflow-hidden rounded-r max-[960px]:aspect-[16/10]">

@@ -1,9 +1,10 @@
-/* eslint-disable @next/next/no-html-link-for-pages -- vanliga länkar, så att webbläsaren själv scrollar till ankaret även från undersidor */
+// Vanliga <a>-länkar i stället för <Link>, så att webbläsaren själv scrollar till ankaret även från undersidor.
 
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { site } from "@/config/site";
 import { navLinks } from "@/content/nav";
+import { sectionHref } from "@/content/sections";
 import { MobileMenu } from "./MobileMenu";
 
 const textLink =
@@ -13,7 +14,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-dark text-white">
       <Container className="flex h-[64px] items-center gap-[34px]">
-        <a href="/#top" className="text-[26px] font-black tracking-[-.01em]">
+        <a href={sectionHref("top")} className="text-[26px] font-black tracking-[-.01em]">
           {site.name}
         </a>
         <nav aria-label="Huvudmeny" className="flex gap-[6px] max-[960px]:hidden">

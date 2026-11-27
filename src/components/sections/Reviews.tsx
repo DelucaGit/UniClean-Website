@@ -1,3 +1,4 @@
+import { sectionId } from "@/content/sections";
 import { GoogleLogo } from "@/components/icons/GoogleLogo";
 import { Container } from "@/components/ui/Container";
 import { TextLink } from "@/components/ui/TextLink";
@@ -14,7 +15,7 @@ function Stars({ label }: { label: string }) {
 
 export function Reviews() {
   return (
-    <section id="omdomen">
+    <section id={sectionId("omdomen")}>
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-[24px]">
           <div>

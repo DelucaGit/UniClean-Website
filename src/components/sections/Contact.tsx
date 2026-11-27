@@ -1,17 +1,17 @@
+import { sectionId } from "@/content/sections";
 import { Container } from "@/components/ui/Container";
 // import { SupportForm } from "@/components/sections/SupportForm";
-import { isPlaceholder, site } from "@/config/site";
+import { site } from "@/config/site";
 
 const itemClass = "border-b border-line py-[18px]";
 const labelClass = "block text-[14px] font-bold text-mute";
 const valueClass = "text-[22px] font-black";
 
 export function Contact() {
-  const { email, phone, phoneHref } = site.contact;
-  const showPhone = !isPlaceholder(phoneHref) && !phone.includes("X");
+  const { email, phone } = site.contact;
 
   return (
-    <section id="kontakt">
+    <section id={sectionId("kontakt")}>
       <Container className="grid grid-cols-2 gap-[84px] max-[960px]:grid-cols-1 max-[960px]:gap-[40px]">
         <div>
           <h2>Behöver du hjälp?</h2>
@@ -23,11 +23,11 @@ export function Contact() {
                 {email}
               </a>
             </div>
-            {showPhone && (
+            {phone && (
               <div className={itemClass}>
                 <small className={labelClass}>Telefon</small>
-                <a href={phoneHref} className={valueClass}>
-                  {phone}
+                <a href={phone.href} className={valueClass}>
+                  {phone.display}
                 </a>
               </div>
             )}

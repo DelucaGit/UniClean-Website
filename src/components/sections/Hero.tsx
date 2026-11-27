@@ -1,3 +1,4 @@
+import { sectionId } from "@/content/sections";
 import Image from "next/image";
 import { HeroForm } from "@/components/sections/HeroForm";
 import { Container } from "@/components/ui/Container";
@@ -5,7 +6,7 @@ import { PhoneFrame } from "@/components/ui/PhoneFrame";
 
 export function Hero() {
   return (
-    <section id="top" className="!pt-[64px] !pb-[76px] max-[960px]:!pt-[36px] max-[960px]:!pb-[56px]">
+    <section id={sectionId("top")} className="!pt-[64px] !pb-[76px] max-[960px]:!pt-[36px] max-[960px]:!pb-[56px]">
       <Container className="grid grid-cols-[1fr_1.12fr] items-center gap-[72px] max-[960px]:grid-cols-1 max-[960px]:gap-[40px]">
         <HeroForm />
 
